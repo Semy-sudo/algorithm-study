@@ -17,7 +17,7 @@
 - 개인 문제는 /personal/[본인이름]의 폴더에 코드리뷰를 제외한 부분을 작성하면 된다. (예시 form.md 참고)
 
 💻 **사용법**
-- Fork해서 본인이름 branch를 따서 PR한다.
+- Fork & Clone해서 본인이름 branch를 따서 PR한다.
 - 폴더 구조는 다음을 따른다.
   ```txt
   /programmers
