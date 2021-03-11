@@ -1,17 +1,26 @@
-def solution(n, arr1, arr2):
-    answer = []
-    for i in range(n):
-      bin_str = bin(arr1[i] | arr2[i])[2:] #숫자에 대해 or연산 후 2진수로 바꾸고 슬라이싱
-      answer.append(("0"*(n-len(bin_str))+ bin_str).replace("1","#").replace("0"," "))
-
+def solution(answers):
+    answer = [0]*3
+    n1 = [1,2,3,4,5]
+    n2 = [2,1,2,3,2,4,2,5]
+    n3 = [3,3,1,1,2,2,4,4,5,5]
     
+    for i in range(len(answers)):
+      
+      if n1[i%len(n1)] == answers[i]:
+        answer[0]+=1
+      if n2[i%len(n2)] == answers[i]:
+        answer[1]+=1
+      if n3[i%len(n3)] == answers[i]:
+        answer[2]+=1 
+    a = []
+    for i in range(3):
+      if answer[i] == max(answer):
+        a.append(i+1)
 
-    return answer
 
-n = 5
-arr1 = [9,20,28,18,11]
-arr2 = [9,1,21,17,28]
-print(solution(n, arr1, arr2))
-#이진법으로 바꾼후 arr1+arr2
+    return a
 
- 
+answers = [1,3,2,4,2]	
+#가장 많은 문제를 맞힌 사람
+s = solution(answers)
+print(s)
