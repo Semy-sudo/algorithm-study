@@ -170,9 +170,6 @@ def solution(dartResult):
 ```python
 
 ```
-- 실패율규표현식을 안쓰니 문제가 안풀려서, 문자열을 숫자|문자|문자 로 구분해 리스트에 담아주는 정규표현식을 사용.
- [('1', 'S', ''), ('2', 'T', ''), ('3', 'S', '')]
-
 
 # 실패율
 
@@ -220,27 +217,8 @@ def solution(N, stages):
 
     return answer
 ```
-```python
-def solution(N, stages):
-    answer = []
-    lis = {i:'' for i in range(1,N+1)}
-
-    sum = 0
-    for i in range(1,N+1):
-      m = len(stages)-sum
-      if m==0:
-        lis[i] = stages.count(i)/1
-      else:
-        lis[i] = stages.count(i)/m
-      sum += stages.count(i)
-    
-    lis = sorted(lis.items(), key=lambda x:x[1], reverse=True)
-    for i in lis:
-      answer.append(i[0])
 
 
-    return answer
-```
 
 **코드 풀이 리뷰** 
 
@@ -613,6 +591,7 @@ def solution(new_id):
 
 ```
 2번조건에서 정규식을 표현해야 하는줄 알고 시간을 많이 썻다
+- answer = re.sub("[^a-z0-9-_.]","",new_id)
 isalnum() 함수를 통해 숫자+영 조합인지, 정규식 말고 in '_-.'을 통해 걸러낼수 있다.
 
 **코드 풀이 리뷰** 
@@ -623,12 +602,4 @@ isalnum() 함수를 통해 숫자+영 조합인지, 정규식 말고 in '_-.'을
 ```python
 
 
-**코드 풀이 리뷰** 
 
-
-**코드 리뷰**(코드 리뷰를 통해 해결했을 시)  
-
-```python
-
-
-```

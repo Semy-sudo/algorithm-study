@@ -45,6 +45,19 @@ def solution(d, budget):
       d.pop()
     return len(d)
 ```
+브루트 포스
+```python
+def solution(d, budget):
+  d.sort()
+  answer = 0
+  for i in d:
+    if i>budget:
+      return answer
+    else:
+      budget-=i
+      answer+=1
+  return answer
+```
 
 # 1차 비밀지도
 문제 링크 : https://programmers.co.kr/learn/courses/30/lessons/17681
