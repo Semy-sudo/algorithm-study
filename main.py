@@ -1,42 +1,11 @@
-def solution(dirs):
-    answer = 0
-    roads = []
-    road = []
-    x,y = 0,0
-    start = [x,y]
-
-    for dir in dirs:
-      if dir == 'U':
-        y+=1
-      if dir == 'D':
-        y-=1
-      if dir == 'R':
-        x+=1
-      if dir == 'L':
-        x-=1
-
-      if x<-5 or x>5 or y<-5 or y>5:
-        x = start[0]
-        y = start[1]
-        continue
-
-      road.append(start)
-      road.append([x,y])#갱신후
-      road.sort()
-      if road not in roads:
-        roads.append(road)
-        
-      start = [x,y] #갱신후로 start 바꾸기
-      road = []
-    print(roads)
-    
-
-
-
-
-    return len(roads)
-
-dirs = "ULURRDLLU"
-s = solution(dirs)
+#예상 대진표
+#다른사람 풀이
+## 비트 XOR
+def solution(n,a,b):
+    print((a-1)^(b-1))
+    return ((a-1)^(b-1)).bit_length() 
+n = 8
+a = 4 #11
+b = 7 #
+s = solution(n,a,b)
 print(s)
-
