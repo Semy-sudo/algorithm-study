@@ -43,6 +43,14 @@ def solution(n):
 **코드 리뷰**(코드 리뷰를 통해 해결했을 시)  
 
 ```python
+def solution(n):
+  ans = 0
+  while n>0: 
+    q,r =  divmod(n,2)
+    if r!=0:
+      ans +=1
+
+  return ans
 ```
 
 
