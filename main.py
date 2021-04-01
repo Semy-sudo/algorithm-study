@@ -1,35 +1,24 @@
-def change(melody):
-    if 'A#' in melody: melody = melody.replace('A#','a')
-    if 'C#' in melody: melody = melody.replace('C#','c')
-    if 'D#' in melody: melody = melody.replace('D#','d')
-    if 'F#' in melody: melody = melody.replace('F#','f')
-    if 'G#' in melody: melody = melody.replace('G#','g')
-    return melody
+import re
 
-def solution(m, musicinfos):
-  m = change(m)
-  answer = ('(None)',None) #제목, 시간
-  for info in musicinfos:
-    start, end, title, melody = info.split(',')
-    start_h,start_m,end_h,end_m = map(int,start.split(':')+end.split(':'))
-    time = (end_h-start_h)*60+end_m-start_m
-    melody = change(melody)
-    realmelody = (melody*time)[:time]
-    if m in realmelody:
-      if answer[1]==None or answer[1]<time:
-        answer = (title,time)
+def solution(files):
+    answer = []
+    new_files = []
+    for i,f in enumerate(files):
+      number = re.findall("\d+",f)
+      number[0]#12, 02
+      second = int(number[0])#숫자
+      first = f[0:f.index(number[0][0])].upper()#숫자앞문자
+      last = f[f.index(number[0][-1])+1:]#나머지
+      new_files.append([i,first,second,last])
+    #head가 같을경우number숫자순
+    new_files = sorted(new_files, key=lambda x:x[2])
 
-  return answer[0]
+    #head로 정렬
+    new_files = sorted(new_files, key=lambda x:x[1])
 
+    #순서로 files참조
+    for n in new_files:
+      answer.append(files[n[0]])
 
-
-
-
-
-
-
-m = "CC#BCC#BCC#BCC#B"#16
-musicinfos = ["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]
-s = solution(m,musicinfos)
-print(s)
-
+    
+    return answer
