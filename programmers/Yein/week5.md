@@ -105,3 +105,97 @@ def solution(genres, plays):
 
 - 딕셔너리 dic = {"yello":4,"orange":5} -> dic.items() = {('yello',4),('orange',5)} key,value를 튜플형태로 묶어줌 
 
+# 네트워크
+문제 링크 :https://programmers.co.kr/learn/courses/30/lessons/43162
+
+
+**문제 내용**  
+
+
+**제한조건**  
+
+**입출력 예**
+input
+	
+output
+
+
+**내가 푼 코드**  
+```python
+def stack(i,j,computers):
+  st = []
+  visited = []
+  st.append([i,j])
+  visited.append([i,j])
+
+  while st:
+    a,b = st.pop()
+    for i in range(len(computers)):
+      if [b,i] not in visited and computers[b][i]==1:
+        visited.append([b,i])
+        st.append([b,i])
+        computers[b][i]=0
+        
+
+def solution(n, computers):
+    answer = 0
+   
+    for i in range(len(computers)):
+      for j in range(len(computers)):
+        if computers[i][j]==1:
+          stack(i,j,computers)
+          answer +=1
+
+        
+
+    return answer
+```
+**코드 풀이 리뷰**  
+
+
+**코드 리뷰**(코드 리뷰를 통해 해결했을 시)  
+```
+```
+# 같은 숫자는 싫어
+문제 링크 :https://programmers.co.kr/learn/courses/30/lessons/12906
+
+
+**문제 내용**  
+
+
+**제한조건**  
+
+**입출력 예**
+input
+[1,1,1,,0,3,3,1,1]	
+output
+[1,0,3,1]
+
+**내가 푼 코드**  
+```python
+def solution(arr):
+  answer = []
+  for a in arr:
+    if not answer:
+      answer.append(a)
+    if answer[-1] == a:
+      continue
+    answer.append(a)
+  return answer
+```
+**코드 풀이 리뷰**  
+
+
+**코드 리뷰**(코드 리뷰를 통해 해결했을 시)  
+```python
+def solution(arr):
+    a = []
+    for i in arr:
+        print(a[-1:])
+        if a[-1:] == [i]: continue
+        a.append(i)
+    return a
+
+```
+
+
